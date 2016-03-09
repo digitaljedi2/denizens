@@ -48,12 +48,16 @@ class Denizens
       if pop_growth.nil?
         pop_growth="None"
       end
-      puts "Year: #{y}\t Population #{population.round}\t Growth: #{pop_growth} "
+      if is_double?(population.round)
+        puts "Year: #{y}\t Population #{population.round}\t Growth: #{pop_growth} - More than double current population"
+      else
+        puts "Year: #{y}\t Population #{population.round}\t Growth: #{pop_growth} "
+      end
     end
   end
 
   def is_double?(current_population)
-    return true if current_population / @pop == 2
+    return true if current_population / @pop >= 2
   end
 
 end
