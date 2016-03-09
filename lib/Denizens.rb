@@ -36,7 +36,7 @@ class Denizens
 
   # generate a population hash
   def generate_table(num_of_years)
-    max_year = @this_year + num_of_years
+    max_year = @this_year + num_of_years.to_i
     for y in @this_year..max_year
       if y == @this_year
         population = @pop
@@ -44,6 +44,9 @@ class Denizens
         diff = y - @this_year
         population = @pop * (1 + @rate) ** diff
         pop_growth = population.to_i - @pop.to_i
+      end
+      if pop_growth.nil?
+        pop_growth="None"
       end
       puts "Year: #{y}\t Population #{population.round}\t Growth: #{pop_growth} "
     end
